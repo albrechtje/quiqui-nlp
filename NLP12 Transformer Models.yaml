@@ -54,10 +54,9 @@
     Does BERT use left context only, or both left and right context to predict the masked word?
   type: single
   answers:
-    - "Left context only — like a standard language model reading left to right"
-    - "Both left and right context — BERT reads the full sentence bidirectionally"
-    - "Right context only — BERT predicts backwards"
-    - "Neither — BERT uses positional encoding instead of surrounding context"
+    - "Left context only"
+    - "Both left and right"
+    - "Right context only"
   correct: B
   explanation: The B in BERT = Bidirectional. Masked LM forces the model to use both sides, unlike standard left-to-right LMs.
 
