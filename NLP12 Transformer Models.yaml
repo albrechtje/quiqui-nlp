@@ -1,0 +1,93 @@
+# QuiQui questions for NLP12 Transformer Models and Self-Attention
+
+# After: Self-Attention – core idea (words attend to each other)
+- question: Which of the following statements are true for self-attention?
+  type: multiple
+  answers:
+    - Each token's representation is influenced by all other tokens in the sequence
+    - The same word gets the same representation regardless of its context
+    - It can capture dependencies between words that are far apart in the sentence
+    - Tokens are processed one after another, like in an RNN
+    - The representation of a word changes depending on the surrounding words
+    - It replaces the need for positional information entirely
+  correct:
+    - A
+    - C
+    - E
+  explanation: B=Word2Vec trap, D=RNN trap, F=positional encoding is still needed.
+
+# After: Self-Attention – final step (full Q, K, V mechanics covered)
+- question: |
+    The scaled dot-product attention is defined as:
+
+    $$A(Q,K,V) = \text{softmax}\left(\frac{Q \cdot K^T}{\sqrt{d_k}}\right) \cdot V$$
+
+    What happens if you use the same learned matrix for Q and K?
+  type: single
+  answers:
+    - "Nothing changes — Q and K are interchangeable"
+    - "Attention becomes symmetric: token $i$ attends to $j$ exactly as much as $j$ attends to $i$"
+    - "The model can no longer learn positional information"
+    - "Gradients vanish because $Q \\cdot K^T$ becomes a square matrix"
+  correct: B
+  explanation: Q=K makes Q·Kᵀ symmetric, so attention(i→j) = attention(j→i). The lecture notes this explicitly.
+
+# After: Multi-Head Attention
+- question: |
+    A transformer uses 8 attention heads, each with embedding dimension $n/8$.
+    The outputs are concatenated and projected back to dimension $n$.
+    What is the key advantage of this design over a single attention head with full dimension $n$?
+  type: single
+  answers:
+    - "It reduces the total number of parameters in the model"
+    - "Each head can learn to attend to different types of relationships simultaneously"
+    - "It allows the model to process longer sequences"
+    - "It makes the attention computation faster because each head is smaller"
+  correct: B
+  explanation: Each head specializes in a different linguistic relationship (e.g. subject-verb, coreference). Parameter count stays roughly the same.
+
+# After: BERT Pre-Training – Masked Language Modeling
+- question: |
+    BERT is trained to predict masked tokens, e.g.:
+
+    > The doctor prescribed a [MASK] for the infection.
+
+    Does BERT use left context only, or both left and right context to predict the masked word?
+  type: single
+  answers:
+    - "Left context only — like a standard language model reading left to right"
+    - "Both left and right context — BERT reads the full sentence bidirectionally"
+    - "Right context only — BERT predicts backwards"
+    - "Neither — BERT uses positional encoding instead of surrounding context"
+  correct: B
+  explanation: The B in BERT = Bidirectional. Masked LM forces the model to use both sides, unlike standard left-to-right LMs.
+
+# After: BERT for Classification (feature extractor vs. full fine-tuning)
+- question: |
+    You want to use BERT for sentiment analysis on product reviews.
+    You have a small labeled dataset of 500 examples.
+    Which approach is most appropriate?
+  type: single
+  answers:
+    - "Train BERT from scratch on the 500 examples"
+    - "Use BERT as a frozen feature extractor and train only a classifier on top"
+    - "Fine-tune all BERT weights end-to-end on the 500 examples"
+    - "Re-run masked language model pre-training on the 500 examples"
+  correct: B
+  explanation: 500 examples is too few for full fine-tuning (overfitting risk) and hopeless for training from scratch. Frozen BERT + lightweight classifier is the safe choice.
+
+# After: Sentence Similarity (motivates SBERT)
+- question: |
+    BERT produces a sentence embedding via the [CLS] token. Given these three sentences:
+
+    > "I love dogs"
+    > "I like puppies"
+    > "The stock market crashed."
+
+    Would this hold? $sim(s_{dogs}, s_{puppies}) \gg sim(s_{dogs}, s_{stocks})$
+  type: single
+  answers:
+    - "Yes"
+    - "No"
+  correct: B
+  explanation: Plain BERT [CLS] is not trained for sentence similarity — all embeddings cluster together. Motivates SBERT.
