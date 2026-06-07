@@ -5,15 +5,14 @@
   type: multiple
   answers:
     - Each token's representation is influenced by all other tokens in the sequence
-    - The same word gets the same representation regardless of its context
     - It can capture dependencies between words that are far apart in the sentence
-    - Tokens are processed one after another, like in an RNN
+    - Tokens are processed one after another
     - The representation of a word changes depending on the surrounding words
-    - It replaces the need for positional information entirely
+    - It does not need positional information
   correct:
     - A
-    - C
-    - E
+    - B
+    - D
   explanation: B=Word2Vec trap, D=RNN trap, F=positional encoding is still needed.
 
 # After: Self-Attention – final step (full Q, K, V mechanics covered)
@@ -23,10 +22,10 @@
     $$A(Q,K,V) = \text{softmax}\left(\frac{Q \cdot K^T}{\sqrt{d_k}}\right) \cdot V$$
 
     What happens if you use the same learned matrix for Q and K?
-  type: single
+  type: multiple
   answers:
     - "Nothing changes — Q and K are interchangeable"
-    - "Attention becomes symmetric: token $i$ attends to $j$ exactly as much as $j$ attends to $i$"
+    - "Token $i$ attends to $j$ exactly as much as $j$ attends to $i$"
     - "The model can no longer learn positional information"
     - "Gradients vanish because $Q \\cdot K^T$ becomes a square matrix"
   correct: B
@@ -89,5 +88,6 @@
   answers:
     - "Yes"
     - "No"
-  correct: B
-  explanation: Plain BERT [CLS] is not trained for sentence similarity — all embeddings cluster together. Motivates SBERT.
+    - "Maybe"
+  correct: C
+  explanation: Plain BERT [CLS] is not trained for sentence similarity.
