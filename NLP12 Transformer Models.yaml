@@ -17,17 +17,17 @@
 
 # After: Self-Attention – final step (full Q, K, V mechanics covered)
 - question: |
-    The scaled dot-product attention is defined as:
+    The **scaled dot-product attention** is defined as:
 
     $$A(Q,K,V) = \text{softmax}\left(\frac{Q \cdot K^T}{\sqrt{d_k}}\right) \cdot V$$
 
     What happens if you use the same learned matrix for Q and K?
-  type: multiple
+  type: single
   answers:
     - "Nothing changes — Q and K are interchangeable"
     - "Token $i$ attends to $j$ exactly as much as $j$ attends to $i$"
     - "The model can no longer learn positional information"
-    - "Gradients vanish because $Q \\cdot K^T$ becomes a square matrix"
+    - "I have absolutely no idea"
   correct: B
   explanation: Q=K makes Q·Kᵀ symmetric, so attention(i→j) = attention(j→i). The lecture notes this explicitly.
 
@@ -38,10 +38,10 @@
     What is the key advantage of this design over a single attention head with full dimension $n$?
   type: single
   answers:
-    - "It reduces the total number of parameters in the model"
-    - "Each head can learn to attend to different types of relationships simultaneously"
-    - "It allows the model to process longer sequences"
     - "It makes the attention computation faster because each head is smaller"
+    - "It allows the model to process longer sequences"
+    - "Each head can learn to attend to different types of relationships simultaneously"
+    - "I have absolutely no clue"
   correct: B
   explanation: Each head specializes in a different linguistic relationship (e.g. subject-verb, coreference). Parameter count stays roughly the same.
 
