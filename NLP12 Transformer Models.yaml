@@ -4,16 +4,14 @@
 - question: Which of the following statements are true for self-attention?
   type: multiple
   answers:
-    - Each token's representation is influenced by all other tokens in the sequence
     - It can capture dependencies between words that are far apart in the sentence
     - Tokens are processed one after another
-    - The representation of a word changes depending on the surrounding words
+    - Each token's representation is influenced by all other tokens in the sequence
     - It does not need positional information
   correct:
     - A
-    - B
-    - D
-  explanation: B=Word2Vec trap, D=RNN trap, F=positional encoding is still needed.
+    - C
+  explanation: A, C are correct
 
 # After: Self-Attention – final step (full Q, K, V mechanics covered)
 - question: |
@@ -33,16 +31,16 @@
 
 # After: Multi-Head Attention
 - question: |
-    A transformer uses 8 attention heads, each with embedding dimension $n/8$.
-    The outputs are concatenated and projected back to dimension $n$.
-    What is the key advantage of this design over a single attention head with full dimension $n$?
+    A transformer uses 8 attention heads, each with embedding dimension $d/8$.
+    The outputs are concatenated and projected back to dimension $d$.
+    What is the key advantage of this design over a single attention head with full dimension $d$?
   type: single
   answers:
     - "It makes the attention computation faster because each head is smaller"
     - "It allows the model to process longer sequences"
-    - "Each head can learn to attend to different types of relationships simultaneously"
+    - "It allows to learn different types of relationships simultaneously"
     - "I have absolutely no clue"
-  correct: B
+  correct: C
   explanation: Each head specializes in a different linguistic relationship (e.g. subject-verb, coreference). Parameter count stays roughly the same.
 
 # After: BERT Pre-Training – Masked Language Modeling
