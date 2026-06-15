@@ -72,6 +72,21 @@
   correct: B
   explanation: 500 examples is too few for full fine-tuning (overfitting risk) and hopeless for training from scratch. Frozen BERT + lightweight classifier is the safe choice.
 
+# After: BERT – The Special CLS Token
+- question: What is true for the [CLS] token?
+  type: multiple
+  answers:
+    - It is placed at the beginning of every input sequence
+    - It is trained to store token-level information for each word
+    - After many self-attention layers, it accumulates information about the entire sentence
+    - It can be used as a sentence embedding for classification tasks
+    - It attends only to the first few tokens in the sequence
+  correct:
+    - A
+    - C
+    - D
+  explanation: A, C, D correct. B wrong (sequence-level, not token-level). E wrong (CLS attends to all tokens).
+
 # After: Sentence Similarity (motivates SBERT)
 - question: |
     BERT produces a sentence embedding via the [CLS] token. Given these three sentences:
