@@ -4,7 +4,7 @@
   answers:
     - "The same prompt may produce different results on different models"
     - "Small wording changes can significantly affect model outputs"
-    - "Systematic evaluation of prompt quality is straightforward"
+    - "Prompt quality is good to evaluate"
     - "Prompt engineering can inject new factual knowledge into a model"
     - "Prompts that work well today may fail after a model update"
     - "The effect of a prompt change is often hard to predict in advance"
