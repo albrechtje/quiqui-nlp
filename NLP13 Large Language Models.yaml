@@ -1,3 +1,35 @@
+# After slide: Sampling with Temperature Adjustment
+- question: |
+    A language model uses the following probability formula for token selection:
+
+    $$P(i) = \frac{e^{z_i/T}}{\sum_j e^{z_j/T}}$$
+
+    What happens as T approaches 0?
+  type: single
+  answers:
+    - "The model samples uniformly from all vocabulary tokens"
+    - "The model becomes more creative and unpredictable"
+    - "The model always selects the token with the highest probability"
+    - "The model ignores the probability distribution and picks randomly"
+  correct: C
+  explanation: "T→0 makes softmax collapse to argmax = greedy decoding. T→∞ gives uniform sampling (A). High T = more creative (B). D is a distractor."
+
+# After slide: What's wrong with a base model?
+- question: |
+    Given the prompt:
+
+    > "Explain the theory of gravity to a 6 year old."
+
+    What would a base model trained only on next-token prediction most likely output?
+  type: single
+  answers:
+    - "A child-friendly explanation of gravity"
+    - "A refusal, because the request is ambiguous"
+    - "More prompts or questions in a similar style"
+    - "A random sequence of tokens unrelated to gravity"
+  correct: C
+  explanation: "Base model continues text — it has seen many question lists and will generate more prompts, not answers. SFT is needed to teach instruction following."
+
 # After slide: Challenges of Prompt Engineering
 - question: "What is true for prompt engineering? (Select all that apply)"
   type: multiple
