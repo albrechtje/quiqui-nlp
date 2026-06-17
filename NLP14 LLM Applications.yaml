@@ -1,0 +1,50 @@
+# QuiQui questions for NLP14 LLM Applications (RAG, Function Calling, Agents)
+
+# After slide: Chunking ("Why do we need it?")
+- question: |
+    Before indexing documents for retrieval, we split them into smaller chunks.
+    Why is chunking necessary? (Select all that apply)
+  type: multiple
+  answers:
+    - "Chunking removes irrelevant and noisy passages from the documents"
+    - "Embedding models can only encode a limited number of input tokens"
+    - "A short passage yields a more focused embedding than a whole document"
+    - "Chunking compresses the text so the vector store needs less storage"
+    - "Smaller chunks let the retriever return more targeted context to the generator LLM"
+  correct:
+    - B
+    - C
+    - E
+  explanation: "B: embedding models have a max input length. C: one vector must represent the whole text — a long doc mixes many topics into one blurry vector. E: retrieving a focused chunk wastes less context budget. A wrong: chunking splits, it doesn't filter content. D wrong: more chunks = more vectors, not less storage."
+
+# After slide: RAG: Architecture
+- question: "In a RAG system, what do you think is more challenging in practice — retrieval or generation?"
+  type: single
+  answers:
+    - "Retrieval — finding the right documents"
+    - "Generation — producing a good answer from them"
+    - "Both are equally challenging"
+  correct: A
+  explanation: "Retrieval is usually the bottleneck: garbage in → garbage out. Bad chunks or misses doom the answer, while modern LLMs generate well given good context. The rest of the section essentially makes this case."
+
+# After slide: Retrieval ("Goal: Retrieve relevant data")
+- question: |
+    The retriever returns the top-*k* chunks for a query. In a RAG system,
+    where should the **focus** of the retriever be?
+  type: single
+  answers:
+    - "On recall — make sure the relevant chunk is among the retrieved ones, even at the cost of some irrelevant ones"
+    - "On precision — return only relevant chunks, even if a relevant one is occasionally missed"
+    - "Precision and recall are equally important and cannot be traded off"
+    - "Neither matters much, since the generator LLM filters out irrelevant chunks anyway"
+  correct: A
+  explanation: "Recall is the priority: a missed chunk is an unrecoverable failure — the LLM cannot answer from context it never received. Irrelevant chunks are tolerable and can be cleaned up downstream by reranking. D wrong: distractors can mislead the LLM and crowd the context window."
+
+# After slide: Potential Problems with RAG
+- question: "A RAG system grounds its answer in retrieved documents. Can it still hallucinate?"
+  type: single
+  answers:
+    - "Yes"
+    - "No"
+  correct: A
+  explanation: "Yes. RAG reduces but does not eliminate hallucination. The LLM may ignore or contradict the retrieved context, the retrieved chunks may be irrelevant or wrong, or the answer may not be in the documents at all — and the model still produces a confident answer."
