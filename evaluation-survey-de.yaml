@@ -1,0 +1,49 @@
+# Demo paper evaluation survey (Koli Calling 2026) — German version
+# 5-Punkte-Zustimmungsskala
+#
+# Einmal in der letzten Vorlesungssitzung durchführen, nachdem QuiQui bereits
+# in ein paar vorherigen Sitzungen eingesetzt wurde. Wird ergänzt durch zwei
+# offene Fragen, die separat erhoben werden (siehe PAPER.md, gleiches
+# Verzeichnis).
+#
+# Kein Teil des öffentlichen quiqui-questions Demo-Repos — dies ist
+# Evaluationsdatenerhebung für das Paper, bleibt hier ungetrackt in git.
+
+# config.yaml für dieses Repo würde session_url/title setzen, falls direkt
+# gepullt; bestehende Kurs-Session-Config wiederverwenden oder hier
+# hinzufügen, falls eigenständig ausgeführt.
+
+- question: "Durch QuiQui habe ich mich während der Vorlesung eher aktiv beteiligt, verglichen mit den Vorlesungen ohne Abstimmungstool."
+  type: single
+  answers:
+    - "Stimme überhaupt nicht zu"
+    - "Stimme nicht zu"
+    - "Neutral"
+    - "Stimme zu"
+    - "Stimme voll zu"
+
+- question: "Die Live-Ergebnisse (Balkendiagramm) haben mir geholfen einzuschätzen, wie mein Verständnis im Vergleich zum Rest der Gruppe war."
+  type: single
+  answers:
+    - "Stimme überhaupt nicht zu"
+    - "Stimme nicht zu"
+    - "Neutral"
+    - "Stimme zu"
+    - "Stimme voll zu"
+
+- question: "QuiQui war einfach auf meinem Smartphone zu bedienen."
+  type: single
+  answers:
+    - "Stimme überhaupt nicht zu"
+    - "Stimme nicht zu"
+    - "Neutral"
+    - "Stimme zu"
+    - "Stimme voll zu"
+
+- question: "Bei einer 90-minütigen Vorlesung fände ich Tool-basierte in dieser Häufigkeit sinnvoll:"
+  type: single
+  answers:
+    - "0 – nichts für mich"
+    - "Alle 30–45 Min. (1–2 Mal)"
+    - "Alle 20–30 Min. (3–4 Mal)"
+    - "Alle 10–15 Min. (5–6 Mal)"

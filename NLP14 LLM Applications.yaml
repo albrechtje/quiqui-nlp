@@ -48,3 +48,20 @@
     - "No"
   correct: A
   explanation: "Yes. RAG reduces but does not eliminate hallucination. The LLM may ignore or contradict the retrieved context, the retrieved chunks may be irrelevant or wrong, or the answer may not be in the documents at all — and the model still produces a confident answer."
+
+# After slide: Chunking ("Chunk size trade-offs")
+- question: |
+    We split documents into chunks before indexing them.
+    What is true about chunking and the choice of chunk size? (Select all that apply)
+  type: multiple
+  answers:
+    - "Smaller chunks give more precise retrieval but risk splitting related information apart"
+    - "Larger chunks preserve more context but dilute relevance with unrelated text"
+    - "Adding overlap between neighbouring chunks helps keep boundary-spanning facts intact"
+    - "There is one universally optimal chunk size that works best for every corpus"
+    - "Chunk size has no effect on retrieval quality, only on storage cost"
+  correct:
+    - A
+    - B
+    - C
+  explanation: "A, B, C describe the core trade-off and overlap as the fix. D wrong: optimal size is corpus- and query-dependent. E wrong: chunk size strongly affects precision, context preservation and relevance dilution."
