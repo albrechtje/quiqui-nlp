@@ -1,18 +1,3 @@
-# Demo paper evaluation survey (Koli Calling 2026) — German version
-# 5-Punkte-Zustimmungsskala
-#
-# Einmal in der letzten Vorlesungssitzung durchführen, nachdem QuiQui bereits
-# in ein paar vorherigen Sitzungen eingesetzt wurde. Wird ergänzt durch zwei
-# offene Fragen, die separat erhoben werden (siehe PAPER.md, gleiches
-# Verzeichnis).
-#
-# Kein Teil des öffentlichen quiqui-questions Demo-Repos — dies ist
-# Evaluationsdatenerhebung für das Paper, bleibt hier ungetrackt in git.
-
-# config.yaml für dieses Repo würde session_url/title setzen, falls direkt
-# gepullt; bestehende Kurs-Session-Config wiederverwenden oder hier
-# hinzufügen, falls eigenständig ausgeführt.
-
 - question: "Durch QuiQui habe ich mich während der Vorlesung eher aktiv beteiligt, verglichen mit den Vorlesungen ohne Abstimmungstool."
   type: single
   answers:
